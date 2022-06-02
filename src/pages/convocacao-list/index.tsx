@@ -1,74 +1,16 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { FlatList, SafeAreaView, StatusBar, Text, View } from 'react-native';
+import { FloatingAction } from "react-native-floating-action";
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { convocacoes } from '../../data/convocacoes-list';
+import { actions } from '../../data/floating-actions';
 import { Convocacao } from '../../models/convocacao';
-
 import { styles } from './style';
 
-const convocacoes: Convocacao[] = [{
-  id: 1,
-  titulo: 'Vaga para QA Pleno',
-  descricao: 'Fazer testes de funcinalidade manuais, além de escrever testes em cypress para o produto e também backend',
-  dataInicial: '30/05/2022',
-  dataFinal: '07/06/2022'
-}, {
-  id: 2,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-}, {
-  id: 3,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-}, {
-  id: 4,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-}, {
-  id: 5,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-}, {
-  id: 6,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-}
-];
+
+
+
 
 const Section: React.FC<{
   convocacao: Convocacao;
@@ -95,19 +37,33 @@ const Section: React.FC<{
   );
 };
 
-const App = () => {
-
-  return (
-    <SafeAreaView style={{ flexGrow: 1 }}>
-      <StatusBar barStyle='light-content' />
-      <FlatList
-        keyExtractor={({ id }) => id.toString()}
-        style={{ flexGrow: 1 }}
-        contentContainerStyle={{ flexGrow: 1 }}
-        data={convocacoes}
-        renderItem={({ item }) => (<Section convocacao={item} />)} />
-    </SafeAreaView>
-  );
-};
-
-export default App;
+//FUNCIONA, PORÉM DEVE CONFIGURAR TYPESCRIPT DO NAVIGATION
+export default function ConvocacaoList({navigation}) {
+  function floatingAction(btn: string | undefined) {
+    switch (btn) {
+      case 'bt_convocacao':
+        navigation.navigate('ConvocacaoForm');
+        break;
+  
+      case 'bt_user':
+        navigation.navigate('UserForm');
+        break;
+    }
+  }
+  
+    return (
+      <SafeAreaView style={{ flexGrow: 1 }}>
+        <StatusBar barStyle='light-content' />
+        <FlatList
+          keyExtractor={({ id }) => id.toString()}
+          style={{ flexGrow: 1 }}
+          contentContainerStyle={{ flexGrow: 1 }}
+          data={convocacoes}
+          renderItem={({ item }) => (<Section convocacao={item} />)} />
+        <FloatingAction
+          actions={actions}
+          onPressItem={name => floatingAction(name)}
+        />
+      </SafeAreaView>
+    );
+}

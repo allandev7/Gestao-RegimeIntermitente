@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import App from './src/pages/convocacao-list';
 import {name as appName} from './app.json';
+import Route from './src/routes/route';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => Route);
