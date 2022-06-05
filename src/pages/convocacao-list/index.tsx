@@ -1,44 +1,15 @@
 import { useRoute } from '@react-navigation/native';
 import React from 'react';
-import { FlatList, SafeAreaView, StatusBar, Text, View } from 'react-native';
+import { FlatList, SafeAreaView, StatusBar } from 'react-native';
 import { FloatingAction } from "react-native-floating-action";
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Section from '../../components/section-convocacao';
 import { convocacoes, convocacoesAntigas } from '../../data/convocacoes-list';
 import { actions } from '../../data/floating-actions';
-import { Convocacao } from '../../models/convocacao';
 import { styles } from './style';
 
 
-
-const Section: React.FC<{
-  convocacao: Convocacao;
-}> = ({ children, convocacao }) => {
-  return (
-    <TouchableOpacity style={styles.sectionContainer}>
-      <Text
-        style={[styles.sectionTitle, { color: Colors.black }]}>
-        {convocacao.titulo}
-      </Text>
-      <Text
-        style={[styles.sectionDescription, { color: Colors.dark }]}>
-        {convocacao.descricao}
-      </Text>
-      <View style={styles.rowDate}>
-        <Text>
-          Data inicial: {convocacao.dataInicial}
-        </Text>
-        <Text>
-          Data final: {convocacao.dataFinal}
-        </Text>
-      </View>
-    </TouchableOpacity>
-  );
-};
-
 //FUNCIONA, PORÉM DEVE CONFIGURAR TYPESCRIPT DO NAVIGATION
-export default function ConvocacaoList({ navigation }) {
-  const route = useRoute();
+export default function ConvocacaoList({ route, navigation }) {
 
   function floatingAction(btn: string | undefined) {
     switch (btn) {
@@ -52,6 +23,8 @@ export default function ConvocacaoList({ navigation }) {
     }
   }
 
+  const isHistoric = route.name === 'Historic' ;
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <StatusBar barStyle='light-content' />
@@ -59,9 +32,10 @@ export default function ConvocacaoList({ navigation }) {
         keyExtractor={({ id }) => id.toString()}
         style={{ flexGrow: 1 }}
         contentContainerStyle={{ flexGrow: 1 }}
-        data={route.name === 'Historic' ? convocacoesAntigas : convocacoes}
+        data={ isHistoric ? convocacoesAntigas : convocacoes}
         renderItem={({ item }) => (<Section convocacao={item} />)} />
       <FloatingAction
+        visible={!isHistoric}
         actions={actions}
         onPressItem={name => floatingAction(name)}
       />

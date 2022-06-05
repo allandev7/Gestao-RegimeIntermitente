@@ -19,6 +19,8 @@ target 'regime_intermitente' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'regime_intermitenteTests' do
     inherit! :complete
     # Pods for testing

@@ -1,9 +1,19 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  mainContainer: {
-    flexGrow: 1,
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
     backgroundColor: '#FFF'
+  },
+  sectionTitle: {
+    fontSize: 22,
+    fontWeight: '600',
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 16,
+    fontWeight: '400',
   },
   rowDate: {
     flexDirection: "row",

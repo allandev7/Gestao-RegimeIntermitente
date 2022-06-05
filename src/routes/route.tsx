@@ -20,16 +20,24 @@ function MainStack() {
     </Stack.Navigator>
   )
 }
+function FuncionarioStack() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Historic" options={{ title: "Convocações Atuais" }} component={ConvocacaoList} />
+      <Stack.Screen name="ConvocacaoForm" options={{ title: "Nova Convocação" }} component={ConvocacaoForm} />
+      <Stack.Screen name="UserForm" options={{ title: "Cadastrar Funcionário" }} component={UserForm} />
+    </Stack.Navigator>
+  )
+}
 
 export default function Route() {
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        <Drawer.Screen name="Home" options={{ title: "Convocações Atuais" }} component={MainStack} />
+        <Drawer.Screen name="HomeStack" options={{ title: "Convocações Atuais" }} component={MainStack} />
         <Drawer.Screen name="Historic" options={{ title: "Histórico de Convocações" }} component={ConvocacaoList} />
-        <Drawer.Screen name="Article" options={{ title: "Empregados" }} component={UserList} />
+        <Drawer.Screen name="FuncionarioStack" options={{ title: "Funcionários" }} component={UserList} />
       </Drawer.Navigator>
-
     </NavigationContainer>
   );
 }
