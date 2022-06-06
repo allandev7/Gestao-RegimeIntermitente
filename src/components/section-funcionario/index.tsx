@@ -1,3 +1,4 @@
+import { useNavigation, useNavigationState } from '@react-navigation/native';
 import React from 'react';
 import { Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -9,8 +10,9 @@ import { styles } from './style';
 const Section: React.FC<{
   funcionario:Funcionario;
 }> = ({ children, funcionario }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.sectionContainer}>
+    <TouchableOpacity onPress={() => navigation.navigate('UserDetail')} style={styles.sectionContainer}>
       <Text
         style={styles.sectionTitle}>
         {funcionario.nome}
