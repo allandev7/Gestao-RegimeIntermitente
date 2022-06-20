@@ -12,7 +12,7 @@ const Section: React.FC<{
 }> = ({ children, funcionario }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('UserDetail')} style={styles.sectionContainer}>
+    <TouchableOpacity onPress={() => navigation.navigate('UserDetail', {id:funcionario.id})} style={styles.sectionContainer}>
       <Text
         style={styles.sectionTitle}>
         {funcionario.nome}

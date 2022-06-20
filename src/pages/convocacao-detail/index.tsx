@@ -1,45 +1,24 @@
 import React from 'react';
 import { Dimensions, SafeAreaView, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { convocacoes, convocacoesAntigas } from '../../data/convocacoes-list';
 import { styles } from './style';
 
-
-const convocacao = {
-  id: 1,
-  titulo: 'Serviço para QA Senior',
-  descricao: 'Fazer testes de funcinalidade manuais, além de escrever testes em cypress para o produto e também backend',
-  dataInicial: '30/05/2022',
-  dataFinal: '07/06/2022',
-  qtdVagas: 3,
-  qtdAceites: 1
-};
-
-const convocados = [
-  {
-    nome: 'Allan da Silva Pereira',
-    status: 'Não respondeu'
-  },
-  {
-    nome: 'Pedro Aguirre',
-    status: 'Aceito'
-  },
-  {
-    nome: 'Guilherme Vercosa',
-    status: 'Negou'
-  }
-];
-
-const ConvocacaoDetail = () => {
+export default function ConvocacaoDetail({ route, navigation }) {
+  const { id } = route.params;
+  const allConvocacoes = [...convocacoes, ...convocacoesAntigas];
+  const convocacao = allConvocacoes.find(x => x.id === id);
+  const qtdAceites = convocacao?.convocados.filter(x => x.status === "Aceito").length;
   const width = Dimensions.get('window').width;
   return (
     <SafeAreaView style={styles.mainContainer}>
       <Text
         style={styles.title}>
-        {convocacao.titulo}
+        {convocacao?.titulo}
       </Text>
       <Text
         style={styles.description}>
-        {convocacao.descricao}
+        {convocacao?.descricao}
       </Text>
       <View style={styles.row}>
         <Text
@@ -48,7 +27,7 @@ const ConvocacaoDetail = () => {
         </Text>
         <Text
           style={styles.txt}>
-          {" " + convocacao.dataInicial}
+          {" " + convocacao?.dataInicial}
         </Text>
       </View>
       <View style={styles.row}>
@@ -58,7 +37,7 @@ const ConvocacaoDetail = () => {
         </Text>
         <Text
           style={styles.txt}>
-          {" " + convocacao.dataFinal}
+          {" " + convocacao?.dataFinal}
         </Text>
       </View>
       <View style={styles.row}>
@@ -68,7 +47,7 @@ const ConvocacaoDetail = () => {
         </Text>
         <Text
           style={styles.txt}>
-          {" " + convocacao.qtdAceites} {convocacao.qtdAceites > 1 ? "aceitas" : "aceita"} de {convocacao.qtdVagas} vagas
+          {" " + qtdAceites} {qtdAceites || 0 > 1 ? "aceitas" : "aceita"} de {convocacao?.qtdVaga} vagas
         </Text>
       </View>
       <Text
@@ -78,7 +57,7 @@ const ConvocacaoDetail = () => {
       <FlatList
         keyExtractor={({ nome }) => nome}
         style={{ flex: 1 }}
-        data={convocados}
+        data={convocacao?.convocados}
         horizontal
         renderItem={({ item }) => (
           <View style={[styles.convocadoContainer, { width: width - (width * 0.2) }]}>
@@ -95,5 +74,3 @@ const ConvocacaoDetail = () => {
     </SafeAreaView>
   );
 };
-
-export default ConvocacaoDetail;

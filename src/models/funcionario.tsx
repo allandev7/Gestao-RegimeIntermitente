@@ -1,3 +1,4 @@
+import { ConvocacaoFuncionario } from "./convocacao-funcionario";
 
 export interface Funcionario {
     id:number;
@@ -7,4 +8,5 @@ export interface Funcionario {
     status: string;
     telefone: string;
     habilidades:string[];
+    convocacoes: ConvocacaoFuncionario[];
 }

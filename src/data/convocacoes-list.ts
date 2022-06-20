@@ -2,89 +2,126 @@ import { Convocacao } from "../models/convocacao";
 
 export const convocacoes: Convocacao[] = [{
   id: 7,
-  titulo: 'Vaga para QA Pleno',
+  titulo: 'Serviço para QA Pleno',
   descricao: 'Fazer testes de funcinalidade manuais, além de escrever testes em cypress para o produto e também backend',
   dataInicial: '30/05/2022',
-  dataFinal: '15/06/2022'
+  dataFinal: '15/07/2022',
+  qtdVaga:2,
+  convocados: [{
+    nome: 'Allan da Silva Pereira', status: 'Aceito'
+  }, {
+    nome: 'Guilherme Vercosa', status: 'Negado'
+  }, {
+    nome: 'Pedro Aguirre', status: 'Não Respondeu'
+  }]
 },
 {
   id: 8,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
+  titulo: 'Serviço para Backend Simples',
+  descricao: 'Criação de 3 entidades e seus relacionamentos',
   dataInicial: '30/05/2022',
-  dataFinal: '16/06/2022'
+  dataFinal: '16/07/2022',
+  qtdVaga:2,
+  convocados: [{
+    nome: 'Alysson da Silva Pereira', status: 'Aceito'
+  }, {
+    nome: 'Guilherme Vercosa', status: 'Negado'
+  }, {
+    nome: 'Pedro Aguirre', status: 'Não Respondeu'
+  }]
 },
 {
   id: 9,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
+  titulo: 'Serviço Backend Avançado',
+  descricao: 'Atualização de uma API de SOAP para REST',
   dataInicial: '30/05/2022',
-  dataFinal: '18/06/2022'
+  dataFinal: '18/07/2022',
+  qtdVaga:1,
+  convocados: [{
+    nome: 'Alysson da Silva Pereira', status: 'Negado'
+  }, {
+    nome: 'Guilherme Vercosa', status: 'Negado'
+  }, {
+    nome: 'Pedro Aguirre', status: 'Não Respondeu'
+  }]
 },
 {
   id: 10,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
+  titulo: 'Serviço para FrontEnd',
+  descricao: 'Criação de uma landing page',
   dataInicial: '30/05/2022',
-  dataFinal: '22/07/2022'
-},
-{
-  id: 11,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '22/07/2022'
-},
-{
-  id: 12,
-  titulo: 'Vaga para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '30/08/2022'
+  dataFinal: '22/07/2022',
+  qtdVaga:1,
+  convocados: [{
+    nome: 'Allan da Silva Pereira', status: 'Não Respondeu'
+  }, {
+    nome: 'Guilherme Vercosa', status: 'Não Respondeu'
+  }, {
+    nome: 'Pedro Aguirre', status: 'Não Respondeu'
+  }]
 }
 ];
 
 
-export const convocacoesAntigas: Convocacao[] = [{
-  id: 1,
-  titulo: 'Serviço para QA Senior',
-  descricao: 'Fazer testes de funcinalidade manuais, além de escrever testes em cypress para o produto e também backend',
-  dataInicial: '30/05/2022',
-  dataFinal: '07/06/2022'
-},
-{
-  id: 2,
-  titulo: 'Serviço para Backend',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-},
-{
-  id: 3,
-  titulo: 'Serviço para Desginer',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-},
-{
-  id: 4,
-  titulo: 'Serviço para Mobile',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-},
-{
-  id: 5,
-  titulo: 'Serviço para FrontEnd',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-},
-{
-  id: 6,
-  titulo: 'Serviço para Devops',
-  descricao: 'Saber fazer integrações via feign, Saber escrever testes e dedicação',
-  dataInicial: '30/05/2022',
-  dataFinal: '05/06/2022'
-}
+export const convocacoesAntigas: Convocacao[] = [
+  {
+    id: 3,
+    titulo: 'Serviço para Desginer',
+    descricao: 'Criar 3 telas utilizando as leis de nielsen e o conceito de affordance',
+    dataInicial: '30/05/2022',
+    dataFinal: '05/06/2022',
+    qtdVaga:2,
+    convocados: [{
+      nome: 'Pedro Aguirre', status: 'Aceito'
+    }, {
+      nome: 'Guilherme Vercosa', status: 'Aceito'
+    }, {
+      nome: 'Allan da Silva Pereira', status: 'Não Respondeu'
+    }]
+  },
+  {
+    id: 4,
+    titulo: 'Serviço para Mobile',
+    descricao: 'Adaptação de um design (Mudança de laout, cores e marca)',
+    dataInicial: '30/05/2022',
+    dataFinal: '05/06/2022',
+    qtdVaga:1,
+    convocados: [{
+      nome: 'Allan da Silva Pereira', status: 'Aceito'
+    }, {
+      nome: 'Guilherme Vercosa', status: 'Não Respondeu'
+    }, {
+      nome: 'Pedro Aguirre', status: 'Não Respondeu'
+    }]
+  },
+  {
+    id: 5,
+    titulo: 'Serviço para FrontEnd c/ Integração',
+    descricao: 'Mudar integração e adicionar validações nos campos de formulário',
+    dataInicial: '30/05/2022',
+    dataFinal: '05/06/2022',
+    qtdVaga:1,
+    convocados: [{
+      nome: 'Alysson da Silva Pereira', status: 'Não Respondeu'
+    }, {
+      nome: 'Guilherme Vercosa', status: 'Não Respondeu'
+    }, {
+      nome: 'Pedro Aguirre', status: 'Aceito'
+    }]
+  },
+  {
+    id: 6,
+    titulo: 'Serviço para Devops',
+    descricao: 'Instalação do JENKINS no servidor para maior facilidade de Deploy',
+    dataInicial: '30/05/2022',
+    dataFinal: '05/06/2022',
+    qtdVaga:1,
+    convocados: [{
+      nome: 'Alysson da Silva Pereira', status: 'Não Respondeu'
+    }, {
+      nome: 'Guilherme Vercosa', status: 'Não Respondeu'
+    }, {
+      nome: 'Allan da Silva Pereira', status: 'Aceito'
+    }]
+  }
 ];

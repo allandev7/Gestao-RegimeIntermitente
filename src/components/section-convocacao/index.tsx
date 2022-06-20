@@ -13,7 +13,7 @@ const Section: React.FC<{
 }> = ({ children, convocacao }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.sectionContainer} onPress={() => navigation.navigate('ConvocacaoDetail')}>
+    <TouchableOpacity style={styles.sectionContainer} onPress={() => navigation.navigate('ConvocacaoDetail', {id:convocacao.id})}>
       <Text
         style={[styles.sectionTitle , { color: Colors.black }]}>
         {convocacao.titulo}

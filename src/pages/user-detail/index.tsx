@@ -1,41 +1,18 @@
 import React from 'react';
 import { Dimensions, SafeAreaView, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { funcionarios } from '../../data/funcionario-list';
 import { styles } from './style';
 
-
-const funcionario = {
-  id: 1,
-  nome: 'Allan da Silva Pereira',
-  cpf: '452.693.548-45',
-  telefone: '(11) 94989-4987',
-  habilidades:['JAVA', 'REACT NATIVE', 'JAVASCRIPT', 'ANGULAR', 'SPRING'],
-  status: 'Disponível',
-  email: 'allan.pereira@tgid.com.br'
-};
-
-const convocacoes = [
-  {
-    titulo: 'Vaga para QA Pleno',
-    status: 'Não respondeu'
-  },
-  {
-    titulo: 'Serviço para Mobile',
-    status: 'Aceito'
-  },
-  {
-    titulo: 'Serviço para FrontEnd',
-    status: 'Negou'
-  }
-];
-
-const UserDetail = () => {
+export default function UserDetail({ route, navigation }) {
+  const { id } = route.params;  
+  const funcionario = funcionarios.find(x => x.id === id);
   const width = Dimensions.get('window').width;
   return (
     <SafeAreaView style={styles.mainContainer}>
       <Text
         style={styles.title}>
-        {funcionario.nome}
+        {funcionario?.nome}
       </Text>
       <View style={styles.row}>
         <Text
@@ -44,7 +21,7 @@ const UserDetail = () => {
         </Text>
         <Text
           style={styles.txt}>
-          {" " + funcionario.cpf}
+          {" " + funcionario?.cpf}
         </Text>
       </View>
       <View style={styles.row}>
@@ -54,7 +31,7 @@ const UserDetail = () => {
         </Text>
         <Text
           style={styles.txt}>
-          {" " + funcionario.email}
+          {" " + funcionario?.email}
         </Text>
       </View>
       <View style={styles.row}>
@@ -64,7 +41,7 @@ const UserDetail = () => {
         </Text>
         <Text
           style={styles.txt}>
-          {" " + funcionario.telefone}
+          {" " + funcionario?.telefone}
         </Text>
       </View>
       <View style={styles.row}>
@@ -73,8 +50,8 @@ const UserDetail = () => {
           Status: 
         </Text>
         <Text
-          style={[styles.txt, {color: funcionario.status === 'Disponível' ? 'green':'#333'}]}>
-          {" " + funcionario.status}
+          style={[styles.txt, {color: funcionario?.status === 'Disponível' ? 'green':'#333'}]}>
+          {" " + funcionario?.status}
         </Text>
       </View>
       <Text
@@ -82,7 +59,7 @@ const UserDetail = () => {
         Habilidades
       </Text>
       <Text style={styles.txt}>
-        {funcionario.habilidades.join('\n')}
+        {funcionario?.habilidades.join('\n')}
       </Text>
       <Text
         style={[styles.title, { marginTop: '10%' }]}>
@@ -91,7 +68,7 @@ const UserDetail = () => {
       <FlatList
         keyExtractor={({ titulo }) => titulo}
         style={{ flex: 1 }}
-        data={convocacoes}
+        data={funcionario?.convocacoes}
         horizontal
         renderItem={({ item }) => (
           <View style={[styles.convocadoContainer, { width: width - (width * 0.2) }]}>
@@ -108,5 +85,3 @@ const UserDetail = () => {
     </SafeAreaView>
   );
 };
-
-export default UserDetail;
